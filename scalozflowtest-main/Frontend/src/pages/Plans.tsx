@@ -74,7 +74,7 @@ const Plans = () => {
   const [newPlanStatus, setNewPlanStatus] = useState<'ACTIVE' | 'PLANNING' | 'COMPLETED'>('ACTIVE');
 
   // Filter / Toolbar States
-  const [issueTypeFilter, setIssueTypeFilter] = useState<'ALL' | 'TASK' | 'EPIC' | 'BUG'>('ALL');
+  const [issueTypeFilter, setIssueTypeFilter] = useState<'ALL' | 'TASK' | 'EPIC' | 'STORY' | 'BUG'>('ALL');
   const [visibleFields, setVisibleFields] = useState<Record<string, boolean>>({
     status: true,
     assignee: true,
@@ -93,7 +93,8 @@ const Plans = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (filterDropdownRef.current && !filterDropdownRef.current.contains(event.target as Node)) {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.dropdown-container')) {
         setShowFieldsDropdown(false);
         setShowWorkItemDropdown(false);
       }
@@ -426,7 +427,7 @@ const Plans = () => {
             <div className="flex items-center gap-3 p-3 bg-[#FAFBFC] border-b border-[#DFE1E6] relative z-20" ref={filterDropdownRef}>
 
               {/* Work Item Dropdown */}
-              <div className="relative">
+              <div className="relative dropdown-container">
                 <button
                   onClick={() => { setShowWorkItemDropdown(!showWorkItemDropdown); setShowFieldsDropdown(false); }}
                   className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-[#DFE1E6] rounded-[3px] text-[13px] font-semibold text-[#172B4D] hover:bg-[#F4F5F7] cursor-pointer"
@@ -457,7 +458,7 @@ const Plans = () => {
               </button>
 
               {/* Add Fields Dropdown */}
-              <div className="relative">
+              <div className="relative dropdown-container">
                 <button
                   onClick={() => { setShowFieldsDropdown(!showFieldsDropdown); setShowWorkItemDropdown(false); }}
                   className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-[#DFE1E6] rounded-[3px] text-[13px] font-semibold text-[#172B4D] hover:bg-[#F4F5F7] cursor-pointer"

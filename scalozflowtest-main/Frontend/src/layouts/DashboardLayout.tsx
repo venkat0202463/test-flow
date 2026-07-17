@@ -132,7 +132,7 @@ const DashboardLayout: React.FC = () => {
    });
    const [assignedTasks, setAssignedTasks] = useState<Task[]>([]);
    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-   const [loadingNotificationId, setLoadingNotificationId] = useState<number | null>(null);
+   const [loadingNotificationId, setLoadingNotificationId] = useState<number | string | null>(null);
    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
    const [isCreateProjectModalOpen, setIsCreateProjectModalOpen] = useState(false);
    const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
@@ -312,6 +312,7 @@ const DashboardLayout: React.FC = () => {
                navigate(getProjectDashboardPath(selected.item));
             } else if (selected.type === 'task') {
                setActiveTaskId(selected.item.id);
+               setActiveTaskProjectId(selected.item.projectId || selected.item.project?.id || null);
                setIsDetailModalOpen(true);
             }
             setShowSearchResults(false);
@@ -535,6 +536,7 @@ const DashboardLayout: React.FC = () => {
                                                       key={t.id}
                                                       onClick={() => {
                                                          setActiveTaskId(t.id);
+                                                         setActiveTaskProjectId(t.projectId || t.project?.id || null);
                                                          setIsDetailModalOpen(true);
                                                          setShowSearchResults(false);
                                                          setSearchQuery('');
