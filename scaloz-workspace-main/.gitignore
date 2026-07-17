@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+target/
+*.log
+.DS_Store
+.idea/
+.vscode/
+*.jar
+*.war
+out/

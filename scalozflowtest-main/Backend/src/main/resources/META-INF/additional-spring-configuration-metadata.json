@@ -1,0 +1,27 @@
+{
+  "properties": [
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "Secret key used for signing JWT tokens (Hex encoded)."
+    },
+    {
+      "name": "jwt.expiration-ms",
+      "type": "java.lang.Integer",
+      "description": "Token expiration time in milliseconds.",
+      "defaultValue": 86400000
+    },
+    {
+      "name": "flowtrack.app.jwt-cookie-name",
+      "type": "java.lang.String",
+      "description": "Name of the HTTP-only cookie used for JWT storage.",
+      "defaultValue": "flowtrack-jwt"
+    },
+    {
+      "name": "flowtrack.frontend.url",
+      "type": "java.lang.String",
+      "description": "The URL of the frontend application for CORS configuration.",
+      "defaultValue": "https://scalozflowtest.scaloz.com"
+    }
+  ]
+}

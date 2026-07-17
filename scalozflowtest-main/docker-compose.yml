@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+
+  frontend:
+    build:
+      context: ./Frontend
+      args:
+        - VITE_API_URL=https://scalozflowtest.scaloz.com/api
+        - VITE_APP_URL=https://scalozflowtest.scaloz.com
+        - VITE_ENCRYPTION_KEY=super-secret-aes-key-for-payloads-2026!
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - flowtrack-net
+    restart: always
+
+  backend:
+    build: ./Backend
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./Backend/.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - flowtrack-net
+    restart: always
+
+networks:
+  flowtrack-net:
+    driver: bridge

@@ -1,0 +1,23 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  tags:
+    - docker
+
+  script:
+    - cd /home/ubuntu/flowtrack
+    - git fetch origin
+    - git reset --hard origin/main
+    - docker compose down
+    - docker image prune -f
+    - export VITE_ENCRYPTION_KEY=$(grep ENCRYPTION_KEY Backend/.env | cut -d '=' -f2-)
+    - export VITE_API_URL=$(grep FRONTEND_URL Backend/.env | cut -d '=' -f2-)/api
+    - export VITE_APP_URL=$(grep FRONTEND_URL Backend/.env | cut -d '=' -f2-)
+    - docker compose build --pull backend
+    - docker compose build frontend
+    - docker compose up -d
+
+  only:
+    - main

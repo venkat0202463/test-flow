@@ -1,0 +1,16 @@
+TESTCASE_ID,SCENARIO,STEPS TO EXECUTE,EXPECTED RESULTS,ACTUAL RESULTS,STATUS
+AUTH_001,User Login,1. Enter valid email\n2. Enter valid password\n3. Click Login,User is redirected to Dashboard and JWT token is stored,Success,Pass
+AUTH_002,User Logout,1. Click Profile icon\n2. Click Logout,JWT token is cleared and user is redirected to Login page,Success,Pass
+PROJ_001,Create New Project,1. Click "Create"\n2. Enter project details\n3. Select Scrum/Kanban\n4. Submit,Project is created and visible in Project List,Success,Pass
+TASK_001,Create Task,1. Navigate to Board\n2. Click "+" in a column\n3. Enter task title\n4. Submit,Task appears in the column and activity is logged,Success,Pass
+TASK_002,Drag & Drop Task,1. Drag task from "To Do" to "In Progress",Task status is updated in DB and activity is logged,Success,Pass
+SPRINT_001,Start Sprint,1. Go to Backlog\n2. Click "Start Sprint" on a planned sprint,Sprint status changes to ACTIVE and board is populated,Success,Pass
+ACT_001,Activity Log Resolution,1. Perform any action (e.g. move task)\n2. Check Dashboard Recent Activity,Log shows "Ankitha Reddy S" instead of email ID,Success,Pass
+BOARD_001,Column Reordering,1. Drag "In Progress" column before "To Do"\n2. Refresh page,Column order is persisted for all users,Success,Pass
+NOTIF_001,Mark All as Read,1. Open Notifications\n2. Click "Mark all as read",All notification indicators disappear and DB status is updated,Success,Pass
+USER_001,Onboard User (Admin),1. Go to Admin Console\n2. Fill user details\n3. Click Onboard,New user can login with temporary credentials,Success,Pass
+STATS_001,Dashboard Stats,1. Open Dashboard\n2. View Project Stats,Overdue and Pending task counts match actual task data,Success,Pass
+EPIC_001,Create Epic,1. Click Create\n2. Select Issue Type "Epic"\n3. Submit,Epic is created and can be linked to child tasks,Success,Pass
+INSIGHTS_001,Project Insights,1. Navigate to Insights page\n2. View Burn-down chart,Chart correctly reflects sprint progress based on task completion,Success,Pass
+SEARCH_001,Global Search,1. Type "FT-" in search bar,Relevant tasks and projects are displayed in results,Success,Pass
+PERMISSION_001,Member Drag-and-Drop,1. Login as regular User\n2. Drag task to new column,Action is successful (permission restriction removed),Success,Pass

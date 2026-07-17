@@ -1,0 +1,21 @@
+{
+  "short_name": "Scaloz IAM",
+  "name": "Scaloz IAM Portal — by Xevyte Technologies",
+  "icons": [
+    {
+      "src": "imp.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "imp.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1F2937",
+  "background_color": "#F5F7FA"
+}

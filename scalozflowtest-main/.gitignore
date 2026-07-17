@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Backend
+Backend/target/
+Backend/*.log
+Backend/backend_log.txt
+Backend/debug_log.txt
+Backend/error_log.txt
+Backend/error_log_nopass.txt
+Backend/error_log_root.txt
+
+# Frontend
+Frontend/node_modules/
+Frontend/dist/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Scratch / Temp Tools
+scratch/
